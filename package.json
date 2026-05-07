@@ -10,12 +10,12 @@
 	"license": "ISC",
 	"packageManager": "pnpm@10.25.0",
 	"dependencies": {
-		"better-auth": "^1.4.3",
-		"zod": "^4.1.13"
+		"better-auth": "^1.6.9",
+		"zod": "^4.4.3"
 	},
 	"devDependencies": {
 		"@biomejs/biome": "2.2.2",
-		"tsx": "^4.20.6",
+		"tsx": "^4.21.0",
 		"typescript": "^5.9.3"
 	}
 }
