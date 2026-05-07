@@ -17,10 +17,10 @@ export default async function Image({
 	const { roomCode } = await params;
 
 	const logoData = await readFile(
-		join(process.cwd(), "public/iconOpaque.svg"),
+		join(process.cwd(), "public/iconOpaque.png"),
 		"base64",
 	);
-	const logoSrc = `data:image/svg+xml;base64,${logoData}`;
+	const logoSrc = `data:image/png;base64,${logoData}`;
 
 	return new ImageResponse(
 		<div
@@ -43,7 +43,7 @@ export default async function Image({
 					marginBottom: "40px",
 				}}
 			>
-				<img src={logoSrc} width="70" height="70" alt="" />
+				<img src={logoSrc} width={90} height={90} alt="" />
 				<div
 					style={{
 						fontSize: "60px",
