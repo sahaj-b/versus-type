@@ -267,7 +267,6 @@ export function registerPvpSessionHandlers(io: ioServer, socket: ioSocket) {
 			sendLobbyUpdate(io, roomCode);
 			updateRoomAvgWpm(roomCode);
 		}
-		console.log(`Player ${socket.id}(${username}) disconnected`);
 	});
 
 	socket.on("pvp:start-match", async (callback) => {

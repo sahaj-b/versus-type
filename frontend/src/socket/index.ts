@@ -33,7 +33,6 @@ export async function setupSocketAndJoin(
 }
 
 export function disconnectSocket() {
-	console.log("Disconnecting socket");
 	if (socket) {
 		socket.disconnect();
 		socket = null;

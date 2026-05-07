@@ -40,7 +40,6 @@ export function findBestMatch(
 		WPM_GAP_PENALTY = 2.2;
 		MIN_SCORE_THRESHOLD = -10;
 	}
-	console.log("# STARTING MATCHMAKING");
 	let bestRoomCode: string | null = null;
 	let maxScore = -Infinity;
 	for (const roomCode in rooms) {
@@ -52,20 +51,11 @@ export function findBestMatch(
 			activeCount >= room.maxPlayers ||
 			(room.type === "matchmaking" && room.status !== "waiting")
 		) {
-			console.log(
-				"# SKIPPING ROOM:",
-				roomCode,
-				"activeCount:",
-				activeCount,
-				"status:",
-				room.status,
-			);
 			continue;
 		}
 
 		// base score on type
 		let score = BASE_SCORE;
-		console.log("# BASE SCORE: ", score);
 
 		// waiting rooms(removed coz singlematch are always waiting)
 		// if (room.status === "waiting") score += WAITING_BONUS;
@@ -74,14 +64,11 @@ export function findBestMatch(
 		const sweetSpotDiff = Math.abs(activeCount - SWEET_SPOT_PLAYER_COUNT);
 		if (activeCount === 1) score += ONE_PLAYER_BONUS;
 		score += Math.max(0, MAX_SWEET_SPOT_BONUS - sweetSpotDiff * 10);
-		console.log("# AFTER FULLNESS: ", score);
 
 		// skill matching
 		const wpmDiff = Math.abs(room.avgWpm - avgWpm);
 		const wpmGap = Math.max(0, wpmDiff - MIN_WPM_GAP);
 		score -= wpmGap ** WPM_DIFF_POWER * WPM_GAP_PENALTY;
-
-		console.log("# AFTER SKILL MATCHING: ", score);
 
 		if (score > maxScore) {
 			maxScore = score;
@@ -89,6 +76,5 @@ export function findBestMatch(
 		}
 	}
 	if (maxScore < MIN_SCORE_THRESHOLD) return null;
-	console.log("# MATCHMAKING FOUND ROOM:", bestRoomCode);
 	return bestRoomCode;
 }

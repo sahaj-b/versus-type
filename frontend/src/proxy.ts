@@ -11,7 +11,6 @@ const SESSION_COOKIE_NAME = "better-auth.session_token";
 const SECURE_SESSION_COOKIE_NAME = "__Secure-better-auth.session_token";
 
 function getSessionCookie(req: NextRequest) {
-	console.log(req.cookies.getAll());
 	return (
 		req.cookies.get(SESSION_COOKIE_NAME) ||
 		req.cookies.get(SECURE_SESSION_COOKIE_NAME)
@@ -49,9 +48,6 @@ export default async function proxy(req: NextRequest) {
 		!isAuthenticated &&
 		(protectedPaths.includes(pathname) || pathname.startsWith("/pvp"))
 	) {
-		console.log(
-			`Unauthenticated user accessing protected path ${pathname}. Redirecting to /anonymous-sign.`,
-		);
 		return NextResponse.redirect(
 			new URL("/anonymous-sign?from=" + pathname, req.url),
 		);

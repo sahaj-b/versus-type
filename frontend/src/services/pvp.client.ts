@@ -56,7 +56,6 @@ export async function getQuickPlayRoom() {
 			throw new Error(`Error: ${errMsg}`);
 		}
 		const data = await response.json();
-		console.log(data);
 		const roomCode = data.roomCode;
 		if (typeof roomCode !== "string") {
 			console.error("Validation error: roomCode is not a string");

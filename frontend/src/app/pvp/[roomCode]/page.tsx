@@ -134,7 +134,6 @@ export default function PvpPage() {
 	async function handleStartCountdown() {
 		if (matchEnded) initializeNextMatchState();
 		const response = await socket?.emitWithAck("pvp:start-match");
-		console.log("Start match response:", response);
 		if (response?.success) {
 			setCountingDown(true);
 			setKeyBufferSize(response.keyBufferSize || DEFAULT_KEY_BUFFER_SIZE);

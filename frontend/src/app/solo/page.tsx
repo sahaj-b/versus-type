@@ -11,7 +11,6 @@ import { Button } from "@/components/ui/button";
 import { Header } from "@/components/ui/header";
 import { loadGameConfig } from "../_game-config";
 import { GameSettings } from "../_game-config/config-modal";
-import { useEnsureSignedIn } from "../hooks/useEnsureSignedIn";
 import { useSmallScreen } from "../hooks/useSmallScreen";
 import Passage from "./Passage";
 
@@ -41,8 +40,6 @@ function saveConfig(config: GeneratorConfig) {
 }
 
 export default function SoloPage() {
-	const { authResolved } = useEnsureSignedIn();
-	console.log(authResolved);
 	const [config, setConfig] = useState<GeneratorConfig>(defaultConfig);
 	const [words, setWords] = useState<string[] | null>(null);
 	const [gameConfig, setGameConfig] = useState(loadGameConfig());
