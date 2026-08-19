@@ -1,8 +1,7 @@
-import { createServer } from "node:http";
 import { fromNodeHeaders, toNodeHandler } from "better-auth/node";
 import cors from "cors";
-import express from "express";
 import rateLimit, { ipKeyGenerator } from "express-rate-limit";
+import express from "fulmine.js";
 import { auth } from "./auth/auth";
 import env from "./env";
 import errorHandler from "./middlewares/error.middleware";
@@ -74,7 +73,5 @@ app.use("/api/user", userRouter);
 app.use("/api/solo", soloRouter);
 app.use("/api/pvp", pvpRouter);
 app.use(errorHandler);
-
-export const httpServer = createServer(app);
 
 export default app;

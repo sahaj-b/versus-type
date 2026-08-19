@@ -5,7 +5,7 @@ import {
 } from "@versus-type/shared";
 import type { GeneratorConfig } from "@versus-type/shared/passage-generator";
 import { fromNodeHeaders } from "better-auth/node";
-import { Router } from "express";
+import express from "fulmine.js";
 import { customAlphabet } from "nanoid";
 import { auth } from "@/auth/auth";
 import { findBestMatch } from "@/matchmaking";
@@ -35,7 +35,7 @@ const alphabet =
 	"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
 const nanoid = customAlphabet(alphabet, MATCH_CODE_LENGTH);
 
-export const pvpRouter = Router();
+export const pvpRouter = express.Router();
 
 function toRoomSettings(settings: RoomSettingsClient): RoomSettings {
 	return {

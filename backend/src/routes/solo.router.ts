@@ -1,11 +1,11 @@
 import { SoloStatsSchema } from "@versus-type/shared";
 import { sql } from "drizzle-orm";
 import { eq } from "drizzle-orm/sqlite-core/expressions";
-import { Router } from "express";
+import express from "fulmine.js";
 import { db } from "../db";
 import { soloMatch, userStats } from "../db/schema";
 
-const soloRouter = Router();
+const soloRouter = express.Router();
 
 soloRouter.post("/", async (req, res) => {
 	const session = res.locals.session;

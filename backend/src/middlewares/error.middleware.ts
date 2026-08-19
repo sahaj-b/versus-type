@@ -1,6 +1,6 @@
-import type { ErrorRequestHandler } from "express";
+import type express from "fulmine.js";
 
-const errorHandler: ErrorRequestHandler = (err, req, res, _next) => {
+const errorHandler: express.ErrorRequestHandler = (err, req, res, _next) => {
 	const statusCode = err.statusCode || 500;
 	const response = {
 		success: false,

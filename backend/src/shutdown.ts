@@ -1,4 +1,4 @@
-import { httpServer } from "./app";
+import app from "./app";
 import { broadcastShutdown } from "./socket/chat.socket";
 import { io } from "./ws-server";
 
@@ -30,7 +30,7 @@ export async function gracefulShutdown() {
 	io.disconnectSockets();
 	console.log("All sockets disconnected.");
 
-	httpServer.close(() => {
+	app.close(() => {
 		console.log("HTTP server closed.");
 	});
 

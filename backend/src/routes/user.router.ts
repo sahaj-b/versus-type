@@ -1,11 +1,11 @@
 import type { MatchHistoryResponse, UserStats } from "@versus-type/shared";
 import { desc, eq, sql } from "drizzle-orm";
-import { Router } from "express";
+import express from "fulmine.js";
 import { rollingAvgWpmFromDB } from "@/socket/dbservice";
 import { db } from "../db";
 import { matches, matchParticipants, soloMatch, userStats } from "../db/schema";
 
-const userRouter = Router();
+const userRouter = express.Router();
 
 userRouter.get("/", async (_, res) => {
 	res.json(res.locals.session);
